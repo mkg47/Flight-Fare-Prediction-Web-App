@@ -46,6 +46,8 @@ def predict():
 
         # Airline
         # AIR ASIA = 0 (not in column)
+        
+
         airline = request.form['airline']
         if(airline == 'Jet Airways'):
             Jet_Airways = 1
@@ -218,6 +220,9 @@ def predict():
         # Source
         # Banglore = 0 (not in column)
         Source = request.form["Source"]
+
+        x=Source
+
         if (Source == 'Delhi'):
             s_Delhi = 1
             s_Kolkata = 0
@@ -256,6 +261,9 @@ def predict():
         # Destination
         # Banglore = 0 (not in column)
         Source = request.form["Destination"]
+
+        y=Source
+
         if (Source == 'Cochin'):
             d_Cochin = 1
             d_Delhi = 0
@@ -297,6 +305,7 @@ def predict():
             d_New_Delhi = 0
             d_Hyderabad = 0
             d_Kolkata = 0
+
         # print(
         #     d_Cochin,
         #     d_Delhi,
@@ -369,9 +378,13 @@ def predict():
         d_Hyderabad,
         d_Kolkata
     ]])
+
     prediction = model.predict(final_features)
 
     output = round(prediction[0], 2)
+
+    if(x==y):
+        output=0
 
     print(output)
     return render_template('home.html', prediction_text="Your Flight price is Rs. {}".format(math.ceil(output)))
