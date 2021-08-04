@@ -387,7 +387,7 @@ def predict():
         output=0
 
     print(output)
-    return render_template('home.html', prediction_text="Your Flight price is Rs. {}".format(math.ceil(output)))
+    return render_template('home.html', prediction_text="Predicted Flight Price is Rs. {}".format(math.ceil(output)))
 
     return render_template("home.html")
 
